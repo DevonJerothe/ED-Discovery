@@ -24,6 +24,8 @@ dependencies:
   hive: ^1.1.1
   moor_flutter: ^2.0.0
   dio: ^3.0.7
+  get_it: ^3.0.3
+
 
 
 dev_dependencies:
