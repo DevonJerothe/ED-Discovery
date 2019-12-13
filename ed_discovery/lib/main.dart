@@ -1,3 +1,4 @@
+import 'package:ed_discovery/ui/home.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
@@ -15,12 +16,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        
-        primarySwatch: Colors.blue,
+      theme: ThemeData.dark().copyWith(
+        accentColor: Colors.red,
+        primaryColor: Colors.orange
       ),
-      
+      home: HomePage(),   
     );
   }
 }
