@@ -7,19 +7,37 @@ part 'system.g.dart';
 
 @JsonSerializable(nullable: false)
 class System {
-  final String name;
-  final int id;
-  int id64;
-  String url;
-  int estimatedValue;
-  int estimatedValueMapped;
-  int marketId;
-  String sName;
+  // final String name;
+  // final int id;
+  // int id64;
+  // String url;
+  // int estimatedValue;
+  // int estimatedValueMapped;
+  // int marketId;
+  // String sName;
 
+  String allegiance;
+  String controlling_minor_faction;
+  int distance;
+  int edsm_id;
+  String government;
+  String id;
+  String id64;
+  String name;
+  bool needs_permit;
+  int population;
+  String primary_economy;
+  String security;
+  String state;
+  double x;
+  double y;
+  double z;
+
+  //List<Faction> minor_faction_presence;
   List<Bodies> bodies;
   List<Stations> stations;
 
-  System({this.name, this.id});
+  System({this.stations});
 
   factory System.fromJson(Map<String, dynamic> data) => _$SystemFromJson(data);
   
