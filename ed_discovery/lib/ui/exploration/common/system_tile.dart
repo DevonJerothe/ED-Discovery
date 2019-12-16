@@ -29,56 +29,67 @@ class _SystemTileState extends State<SystemTile> {
       padding: EdgeInsets.all(6),
       child: Container(
         decoration: BoxDecoration(
-            border: Border.all(
-              color: Colors.orange,
-            ),
-            image: DecorationImage(
-                alignment: Alignment.bottomRight,
-                image: AssetImage(allegiance))),
+          border: Border.all(
+            color: Colors.orange,
+          ),
+          // image: DecorationImage(
+          //   alignment: Alignment.bottomRight,
+          //   image: AssetImage(allegiance),
+          // ),
+        ),
         height: 120,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Stack(
           children: <Widget>[
-            Container(
-              padding: EdgeInsets.all(12),
-              child: Image.asset('assets/system.png',
-                  height: 55, color: Colors.blue),
+            Positioned(
+              child: Image.asset(allegiance, height: 200, width: 250, color: Colors.orange),
+              bottom: -70,
+              right: -100,
             ),
-            Container(
-              padding: EdgeInsets.all(12),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.all(12),
+                  child: Image.asset('assets/system.png',
+                      height: 55, color: Colors.blue),
+                ),
+                Container(
+                  padding: EdgeInsets.all(12),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
-                          Text(
-                            system.name,
-                            style: TextStyle(
-                                fontSize: 22, fontWeight: FontWeight.bold),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                system.name,
+                                style: TextStyle(
+                                    fontSize: 22, fontWeight: FontWeight.bold),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Icon(FontAwesomeIcons.solidSquare,
+                                    size: 8, color: security),
+                              ),
+                            ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Icon(FontAwesomeIcons.solidSquare,
-                                size: 8, color: security),
-                          ),
+                          Text('${system.distance.toStringAsFixed(4)} ly'),
+                          Container(),
                         ],
                       ),
-                      Text('${system.distance.toStringAsFixed(4)} ly'),
-                      Container(),
+                      Text('Population: ${system.population}'),
+                      Text('Economy: ${system.primary_economy}'),
+                      Text('Government: ${system.government}'),
+                      Text('State: ${system.state}')
                     ],
                   ),
-                  Text('Population: ${system.population}'),
-                  Text('Economy: ${system.primary_economy}'),
-                  Text('Government: ${system.government}'),
-                  Text('State: ${system.state}')
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),
