@@ -12,7 +12,7 @@ Factions _$FactionsFromJson(Map<String, dynamic> json) {
     ..name = json['name'] as String
     ..allegiance = json['allegiance'] as String
     ..government = json['government'] as String
-    ..influence = (json['influence'] as num).toDouble()
+    ..influence = (json['influence'] as num)?.toDouble()
     ..state = json['state'] as String
     ..isPlayer = json['isPlayer'] as bool;
 }

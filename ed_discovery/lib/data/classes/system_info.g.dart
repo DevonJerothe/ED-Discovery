@@ -8,10 +8,14 @@ part of 'system_info.dart';
 
 SystemInfo _$SystemInfoFromJson(Map<String, dynamic> json) {
   return SystemInfo(
-    Information.fromJson(json['information'] as Map<String, dynamic>),
+    json['information'] == null
+        ? null
+        : Information.fromJson(json['information'] as Map<String, dynamic>),
     json['name'] as String,
   )
-    ..primaryStar = Bodies.fromJson(json['primaryStar'] as Map<String, dynamic>)
+    ..primaryStar = json['primaryStar'] == null
+        ? null
+        : Bodies.fromJson(json['primaryStar'] as Map<String, dynamic>)
     ..permitName = json['permitName'] as String
     ..requirPermit = json['requirPermit'] as bool;
 }

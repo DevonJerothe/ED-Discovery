@@ -10,12 +10,13 @@ Stations _$StationsFromJson(Map<String, dynamic> json) {
   return Stations()
     ..allegiance = json['allegiance'] as String
     ..controlling_minor_faction = json['controlling_minor_faction'] as String
-    ..distance = (json['distance'] as num).toDouble()
-    ..distance_to_arrival = (json['distance_to_arrival'] as num).toDouble()
+    ..distance = (json['distance'] as num)?.toDouble()
+    ..distance_to_arrival = (json['distance_to_arrival'] as num)?.toDouble()
     ..edsm_id = json['edsm_id'] as int
     ..export_commodities = (json['export_commodities'] as List)
-        .map((e) => Commodity.fromJson(e as Map<String, dynamic>))
-        .toList()
+        ?.map((e) =>
+            e == null ? null : Commodity.fromJson(e as Map<String, dynamic>))
+        ?.toList()
     ..government = json['government'] as String
     ..has_large_pad = json['has_large_pad'] as bool
     ..has_market = json['has_market'] as bool
@@ -23,32 +24,38 @@ Stations _$StationsFromJson(Map<String, dynamic> json) {
     ..has_shipyard = json['has_shipyard'] as bool
     ..id = json['id'] as String
     ..import_commodities = (json['import_commodities'] as List)
-        .map((e) => Commodity.fromJson(e as Map<String, dynamic>))
-        .toList()
+        ?.map((e) =>
+            e == null ? null : Commodity.fromJson(e as Map<String, dynamic>))
+        ?.toList()
     ..is_planetary = json['is_planetary'] as bool
     ..market = (json['market'] as List)
-        .map((e) => Commodity.fromJson(e as Map<String, dynamic>))
-        .toList()
+        ?.map((e) =>
+            e == null ? null : Commodity.fromJson(e as Map<String, dynamic>))
+        ?.toList()
     ..modules = (json['modules'] as List)
-        .map((e) => Module.fromJson(e as Map<String, dynamic>))
-        .toList()
+        ?.map((e) =>
+            e == null ? null : Module.fromJson(e as Map<String, dynamic>))
+        ?.toList()
     ..name = json['name'] as String
     ..power_state = json['power_state'] as String
     ..primary_economy = json['primary_economy'] as String
     ..prohibited_commodities = (json['prohibited_commodities'] as List)
-        .map((e) => Commodity.fromJson(e as Map<String, dynamic>))
-        .toList()
+        ?.map((e) =>
+            e == null ? null : Commodity.fromJson(e as Map<String, dynamic>))
+        ?.toList()
     ..secondary_economy = json['secondary_economy'] as String
     ..services = (json['services'] as List)
-        .map((e) => Misc.fromJson(e as Map<String, dynamic>))
-        .toList()
+        ?.map(
+            (e) => e == null ? null : Misc.fromJson(e as Map<String, dynamic>))
+        ?.toList()
     ..ships = (json['ships'] as List)
-        .map((e) => Ship.fromJson(e as Map<String, dynamic>))
-        .toList()
+        ?.map(
+            (e) => e == null ? null : Ship.fromJson(e as Map<String, dynamic>))
+        ?.toList()
     ..system_id64 = json['system_id64'] as int
     ..system_name = json['system_name'] as String
     ..system_power =
-        (json['system_power'] as List).map((e) => e as String).toList()
+        (json['system_power'] as List)?.map((e) => e as String)?.toList()
     ..system_x = json['system_x'] as int
     ..system_y = json['system_y'] as int
     ..system_z = json['system_z'] as int

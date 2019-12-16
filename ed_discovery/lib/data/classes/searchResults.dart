@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'searchResults.g.dart';
 
-@JsonSerializable(nullable: false)
+@JsonSerializable(nullable: true)
 class SearchStationResults {
   final int count;
   final int from;
@@ -19,7 +19,7 @@ class SearchStationResults {
   
 }
 
-@JsonSerializable(nullable: false)
+@JsonSerializable(nullable: true)
 class SearchSystemResults {
   final int count;
   final int from;

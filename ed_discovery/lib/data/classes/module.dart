@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'module.g.dart';
 
-@JsonSerializable(nullable: false)
+@JsonSerializable(nullable: true)
 class Module {
   
   String category;

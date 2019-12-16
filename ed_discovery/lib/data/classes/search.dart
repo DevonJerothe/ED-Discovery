@@ -1,22 +1,3 @@
-class SearchBuilder {
-  Search search;
-
-  SearchBuilder({this.search});
-
-  SearchBuilder.fromJson(Map<String, dynamic> json) {
-    search =
-        json['search'] != null ? new Search.fromJson(json['search']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.search != null) {
-      data['search'] = this.search.toJson();
-    }
-    return data;
-  }
-}
-
 class Search {
   Filters filters;
   int page;
@@ -57,14 +38,16 @@ class Search {
 
 class Filters {
   DistanceFromCoords distanceFromCoords;
+  Name name;
   List<Market> market;
 
-  Filters({this.distanceFromCoords, this.market});
+  Filters({this.distanceFromCoords, this.market, this.name});
 
   Filters.fromJson(Map<String, dynamic> json) {
     distanceFromCoords = json['distance_from_coords'] != null
         ? new DistanceFromCoords.fromJson(json['distance_from_coords'])
         : null;
+    name = json['name'] != null ? new Name.fromJson(json['name']) : null;
     if (json['market'] != null) {
       market = new List<Market>();
       json['market'].forEach((v) {
@@ -81,6 +64,25 @@ class Filters {
     if (this.market != null) {
       data['market'] = this.market.map((v) => v.toJson()).toList();
     }
+    if (this.name != null) {
+      data['name'] = this.name.toJson();
+    }
+    return data;
+  }
+}
+
+class Name {
+  String value;
+
+  Name({this.value});
+
+  Name.fromJson(Map<String, dynamic> json) {
+    value = json['value'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['value'] = this.value;
     return data;
   }
 }

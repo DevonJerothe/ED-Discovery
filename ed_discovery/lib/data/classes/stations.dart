@@ -8,7 +8,7 @@ import 'ship.dart';
 
 part 'stations.g.dart';
 
-@JsonSerializable(nullable: false)
+@JsonSerializable(nullable: true)
 class Stations {
 
   String allegiance;

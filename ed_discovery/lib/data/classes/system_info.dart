@@ -4,7 +4,7 @@ import 'bodies.dart';
 
 part 'system_info.g.dart';
 
-@JsonSerializable(nullable: false)
+@JsonSerializable(nullable: true)
 class SystemInfo {
   final String name;
   final Information information;

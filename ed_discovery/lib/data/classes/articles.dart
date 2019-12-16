@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'articles.g.dart';
 
-@JsonSerializable(nullable: false)
+@JsonSerializable(nullable: true)
 class Article {
   final String title;
   final String date;

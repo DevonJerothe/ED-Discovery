@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'bodies.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(nullable: true)
 class Bodies {
   final int id;
   final String name;

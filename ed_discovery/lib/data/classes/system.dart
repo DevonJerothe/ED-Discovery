@@ -5,17 +5,8 @@ import 'stations.dart';
 
 part 'system.g.dart';
 
-@JsonSerializable(nullable: false)
+@JsonSerializable(nullable: true)
 class System {
-  // final String name;
-  // final int id;
-  // int id64;
-  // String url;
-  // int estimatedValue;
-  // int estimatedValueMapped;
-  // int marketId;
-  // String sName;
-
   String allegiance;
   String controlling_minor_faction;
   int distance;
@@ -33,7 +24,6 @@ class System {
   double y;
   double z;
 
-  //List<Faction> minor_faction_presence;
   List<Bodies> bodies;
   List<Stations> stations;
 

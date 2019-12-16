@@ -11,8 +11,9 @@ SearchStationResults _$SearchStationResultsFromJson(Map<String, dynamic> json) {
     json['count'] as int,
     json['from'] as int,
     (json['results'] as List)
-        .map((e) => Stations.fromJson(e as Map<String, dynamic>))
-        .toList(),
+        ?.map((e) =>
+            e == null ? null : Stations.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     json['search_reference'] as String,
     json['size'] as int,
   );
@@ -33,8 +34,9 @@ SearchSystemResults _$SearchSystemResultsFromJson(Map<String, dynamic> json) {
     json['count'] as int,
     json['from'] as int,
     (json['results'] as List)
-        .map((e) => System.fromJson(e as Map<String, dynamic>))
-        .toList(),
+        ?.map((e) =>
+            e == null ? null : System.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     json['search_reference'] as String,
     json['size'] as int,
   );

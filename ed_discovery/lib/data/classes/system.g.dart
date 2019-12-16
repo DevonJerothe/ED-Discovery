@@ -9,8 +9,9 @@ part of 'system.dart';
 System _$SystemFromJson(Map<String, dynamic> json) {
   return System(
     stations: (json['stations'] as List)
-        .map((e) => Stations.fromJson(e as Map<String, dynamic>))
-        .toList(),
+        ?.map((e) =>
+            e == null ? null : Stations.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
   )
     ..allegiance = json['allegiance'] as String
     ..controlling_minor_faction = json['controlling_minor_faction'] as String
@@ -25,12 +26,13 @@ System _$SystemFromJson(Map<String, dynamic> json) {
     ..primary_economy = json['primary_economy'] as String
     ..security = json['security'] as String
     ..state = json['state'] as String
-    ..x = (json['x'] as num).toDouble()
-    ..y = (json['y'] as num).toDouble()
-    ..z = (json['z'] as num).toDouble()
+    ..x = (json['x'] as num)?.toDouble()
+    ..y = (json['y'] as num)?.toDouble()
+    ..z = (json['z'] as num)?.toDouble()
     ..bodies = (json['bodies'] as List)
-        .map((e) => Bodies.fromJson(e as Map<String, dynamic>))
-        .toList();
+        ?.map((e) =>
+            e == null ? null : Bodies.fromJson(e as Map<String, dynamic>))
+        ?.toList();
 }
 
 Map<String, dynamic> _$SystemToJson(System instance) => <String, dynamic>{
