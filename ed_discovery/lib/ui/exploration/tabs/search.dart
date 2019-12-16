@@ -39,6 +39,7 @@ class _StarMapSearchState extends State<StarMapSearch> {
                 trailing: Icon(Icons.filter_list),
                 title: TextField(
                   onEditingComplete: () {
+                    FocusScope.of(context).requestFocus(FocusNode());
                     setState(() {
                       searched = false;
                       searched = true;
