@@ -9,7 +9,7 @@ part 'system.g.dart';
 class System {
   String allegiance;
   String controlling_minor_faction;
-  int distance;
+  double distance;
   int edsm_id;
   String government;
   String id;

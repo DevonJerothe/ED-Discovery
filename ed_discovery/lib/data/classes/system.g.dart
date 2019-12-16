@@ -15,7 +15,7 @@ System _$SystemFromJson(Map<String, dynamic> json) {
   )
     ..allegiance = json['allegiance'] as String
     ..controlling_minor_faction = json['controlling_minor_faction'] as String
-    ..distance = json['distance'] as int
+    ..distance = (json['distance'] as num)?.toDouble()
     ..edsm_id = json['edsm_id'] as int
     ..government = json['government'] as String
     ..id = json['id'] as String

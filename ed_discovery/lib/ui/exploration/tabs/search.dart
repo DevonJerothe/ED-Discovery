@@ -1,3 +1,6 @@
+import 'package:ed_discovery/data/classes/searchResults.dart';
+import 'package:ed_discovery/data/utils/api_call.dart';
+import 'package:ed_discovery/ui/exploration/common/system_tile.dart';
 import 'package:flutter/material.dart';
 
 class StarMapSearch extends StatefulWidget {
@@ -35,6 +38,12 @@ class _StarMapSearchState extends State<StarMapSearch> {
               child: ExpansionTile(
                 trailing: Icon(Icons.filter_list),
                 title: TextField(
+                  onEditingComplete: () {
+                    setState(() {
+                      searched = false;
+                      searched = true;
+                    });
+                  },
                   controller: _textController,
                   autocorrect: false,
                   decoration: InputDecoration(
@@ -42,6 +51,11 @@ class _StarMapSearchState extends State<StarMapSearch> {
                       suffixIcon: GestureDetector(
                         child: Icon(Icons.clear),
                         onTap: () {
+                          if(searched){
+                            setState(() {
+                              searched = false;                             
+                            });
+                          }
                           _textController.text = '';
                         },
                       ),
@@ -116,6 +130,35 @@ class _StarMapSearchState extends State<StarMapSearch> {
                   )
                 ],
               ),
+            ),
+            Builder(
+              builder: (_) {
+                if (!searched) {
+                  return Container();
+                } else if (searched) {
+                  if (system) {
+                    return FutureBuilder<SearchSystemResults>(
+                      future: searchSystem(systemName: _textController.text),
+                      builder: (context, result){
+                        if(result.hasData && result.data != null){
+                          final systems = result.data.results;
+                          for(var system in systems){
+                            return SystemTile(system: system);
+                          }
+                        }else if(result.hasData && result.data == null){
+                          return Center(child: Text('No System Found'));
+                        }else{
+                          return Center(child: CircularProgressIndicator());
+                        }
+                      },
+                    );
+                  } else if (body) {
+                    //FutureBuilder()
+                  } else if (station) {
+                    //FutureBuilder()
+                  }
+                }
+              },
             )
           ],
         ),
