@@ -19,7 +19,7 @@ System _$SystemFromJson(Map<String, dynamic> json) {
     ..edsm_id = json['edsm_id'] as int
     ..government = json['government'] as String
     ..id = json['id'] as String
-    ..id64 = json['id64'] as String
+    ..id64 = json['id64'] as int
     ..name = json['name'] as String
     ..needs_permit = json['needs_permit'] as bool
     ..population = json['population'] as int

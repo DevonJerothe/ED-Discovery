@@ -7,12 +7,11 @@ part of 'bodies.dart';
 // **************************************************************************
 
 Bodies _$BodiesFromJson(Map<String, dynamic> json) {
-  return Bodies(
-    id: json['id'] as int,
-    name: json['name'] as String,
-    type: json['type'] as String,
-    subType: json['subType'] as String,
-  )
+  return Bodies()
+    ..id = json['id'] as int
+    ..name = json['name'] as String
+    ..type = json['type'] as String
+    ..subType = json['subType'] as String
     ..distanceToArrival = json['distanceToArrival'] as int
     ..isMainStar = json['isMainStar'] as bool
     ..isScoopable = json['isScoopable'] as bool
@@ -45,7 +44,15 @@ Bodies _$BodiesFromJson(Map<String, dynamic> json) {
         ?.map(
             (e) => e == null ? null : Rings.fromJson(e as Map<String, dynamic>))
         ?.toList()
-    ..reserveLevel = json['reserveLevel'] as String;
+    ..reserveLevel = json['reserveLevel'] as String
+    ..distance_to_arrival = json['distance_to_arrival'] as int
+    ..edsm_id = json['edsm_id'] as int
+    ..estimated_mapping_value = json['estimated_mapping_value'] as int
+    ..estimated_scan_value = json['estimated_scan_value'] as int
+    ..id64 = json['id64'] as int
+    ..is_main_star = json['is_main_star'] as bool
+    ..subtype = json['subtype'] as String
+    ..terraforming_state = json['terraforming_state'] as String;
 }
 
 Map<String, dynamic> _$BodiesToJson(Bodies instance) => <String, dynamic>{
@@ -82,6 +89,14 @@ Map<String, dynamic> _$BodiesToJson(Bodies instance) => <String, dynamic>{
       'terraformingState': instance.terraformingState,
       'rings': instance.rings,
       'reserveLevel': instance.reserveLevel,
+      'distance_to_arrival': instance.distance_to_arrival,
+      'edsm_id': instance.edsm_id,
+      'estimated_mapping_value': instance.estimated_mapping_value,
+      'estimated_scan_value': instance.estimated_scan_value,
+      'id64': instance.id64,
+      'is_main_star': instance.is_main_star,
+      'subtype': instance.subtype,
+      'terraforming_state': instance.terraforming_state,
     };
 
 Rings _$RingsFromJson(Map<String, dynamic> json) {

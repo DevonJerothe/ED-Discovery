@@ -13,7 +13,7 @@ class System {
   int edsm_id;
   String government;
   String id;
-  String id64;
+  int id64;
   String name;
   bool needs_permit;
   int population;
