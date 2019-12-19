@@ -1,5 +1,6 @@
 import 'package:ed_discovery/data/classes/searchResults.dart';
 import 'package:ed_discovery/data/utils/api_call.dart';
+import 'package:ed_discovery/ui/exploration/common/station_tile.dart';
 import 'package:ed_discovery/ui/exploration/common/system_tile.dart';
 import 'package:flutter/material.dart';
 
@@ -52,9 +53,9 @@ class _StarMapSearchState extends State<StarMapSearch> {
                       suffixIcon: GestureDetector(
                         child: Icon(Icons.clear),
                         onTap: () {
-                          if(searched){
+                          if (searched) {
                             setState(() {
-                              searched = false;                             
+                              searched = false;
                             });
                           }
                           _textController.text = '';
@@ -138,25 +139,51 @@ class _StarMapSearchState extends State<StarMapSearch> {
                   return Container();
                 } else if (searched) {
                   if (system) {
-                    return FutureBuilder<SearchSystemResults>(
-                      future: searchSystem(systemName: _textController.text),
-                      builder: (context, result){
-                        if(result.hasData && result.data != null){
-                          final systems = result.data.results;
-                          for(var system in systems){
-                            return SystemTile(system: system);
+                    return Expanded(
+                      child: FutureBuilder<SearchSystemResults>(
+                        future: searchSystem(systemName: _textController.text),
+                        builder: (context, result) {
+                          if (result.hasData && result.data != null) {
+                            final systems = result.data.results;
+                            return ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: systems.length,
+                              itemBuilder: (context, index){
+                                return SystemTile(system: systems[index]);
+                              },
+                            );
+                          } else if (result.hasData && result.data == null) {
+                            return Center(child: Text('No System Found'));
+                          } else {
+                            return Center(child: CircularProgressIndicator());
                           }
-                        }else if(result.hasData && result.data == null){
-                          return Center(child: Text('No System Found'));
-                        }else{
-                          return Center(child: CircularProgressIndicator());
-                        }
-                      },
+                        },
+                      ),
                     );
                   } else if (body) {
                     //FutureBuilder()
                   } else if (station) {
-                    //FutureBuilder()
+                    return Expanded(
+                      child: FutureBuilder<SearchStationResults>(
+                        future: searchStations(systemName: _textController.text),
+                        builder: (context, result) {
+                          if (result.hasData && result.data != null) {
+                            final stations = result.data.results;
+                            return ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: stations.length,
+                              itemBuilder: (context, index){
+                                return StationTile(station: stations[index]);
+                              },
+                            );
+                          } else if (result.hasData && result.data.results.isEmpty) {
+                            return Center(child: Text('No Stations Found'));
+                          } else {
+                            return Center(child: CircularProgressIndicator());
+                          }
+                        },
+                      ),
+                    );
                   }
                 }
               },

@@ -37,9 +37,9 @@ class Stations {
   int system_id64;
   String system_name;
   List<String> system_power;
-  int system_x;
-  int system_y;
-  int system_z;
+  double system_x;
+  double system_y;
+  double system_z;
   String type;
 
   Stations();

@@ -24,7 +24,8 @@ class _ExplorationHomeState extends State<ExplorationHome> {
             preferredSize: Size.fromHeight(10),
             child: Center(
               child: TabBar(
-                indicatorColor: Colors.red,
+                indicatorColor: Colors.blue,
+                labelStyle: TextStyle(color: Colors.blue),
                 onTap: (val) => _currentIndex = val,
                 isScrollable: false,
                 tabs: <Widget>[

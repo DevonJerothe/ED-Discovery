@@ -56,9 +56,9 @@ Stations _$StationsFromJson(Map<String, dynamic> json) {
     ..system_name = json['system_name'] as String
     ..system_power =
         (json['system_power'] as List)?.map((e) => e as String)?.toList()
-    ..system_x = json['system_x'] as int
-    ..system_y = json['system_y'] as int
-    ..system_z = json['system_z'] as int
+    ..system_x = (json['system_x'] as num)?.toDouble()
+    ..system_y = (json['system_y'] as num)?.toDouble()
+    ..system_z = (json['system_z'] as num)?.toDouble()
     ..type = json['type'] as String;
 }
 
